@@ -1,7 +1,6 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
 import 'package:nitor_ping/presentation/bloc/ping_bloc.dart';
 import 'package:nitor_ping/presentation/bloc/ping_event.dart';
 import 'package:nitor_ping/presentation/bloc/ping_state.dart';
@@ -9,7 +8,6 @@ import 'package:nitor_ping/presentation/bloc/ping_state.dart';
 
 class FakePingBloc extends MockBloc<PingEvent, PingState> implements PingBloc {}
 
-@GenerateMocks([PingBloc])
 void main() {
   final FakePingBloc mockPingBloc = FakePingBloc();
   final Ping mockPing = Ping('google.com', count: 1);

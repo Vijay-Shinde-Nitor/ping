@@ -10,7 +10,7 @@ class PingInitState extends PingState {
 }
 
 class PingingState extends PingState {
-  late Ping ping;
+  final Ping ping;
   PingingState(this.ping);
 
   @override

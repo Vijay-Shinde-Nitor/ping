@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:get_it/get_it.dart';
 import 'package:nitor_ping/core/constant.dart';
+import 'package:nitor_ping/injection_container.dart' as ic;
 
 import 'package:nitor_ping/main.dart';
 
 void main() {
+  setUpAll((){
+    ic.getIt = GetIt.instance;
+    //Setting up DI
+    ic.setUp();
+  });
   testWidgets(
       'when button is not pressed then Press button message should be displayed',
       (WidgetTester tester) async {

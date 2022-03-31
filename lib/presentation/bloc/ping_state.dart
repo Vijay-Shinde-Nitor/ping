@@ -1,4 +1,3 @@
-
 import 'package:dart_ping/dart_ping.dart';
 import 'package:equatable/equatable.dart';
 
@@ -10,7 +9,8 @@ class PingInitState extends PingState {
 }
 
 class PingingState extends PingState {
-  final Ping ping;
+  final Stream<PingData> ping;
+
   PingingState(this.ping);
 
   @override

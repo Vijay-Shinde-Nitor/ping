@@ -1,11 +1,16 @@
+import 'package:dart_ping/dart_ping.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nitor_ping/data/ping_repository.dart';
 import 'package:nitor_ping/presentation/bloc/ping_event.dart';
 import 'package:nitor_ping/presentation/bloc/ping_state.dart';
 
 class PingBloc extends Bloc<PingEvent, PingState> {
-  PingBloc() : super(PingInitState()) {
+  final PingRepository repository;
+
+  PingBloc({required this.repository}) : super(PingInitState()) {
     on<PingPressedEvent>((event, emit) async {
-      emit(PingingState(event.ping));
+      Stream<PingData> ping = await repository.startPingProcess();
+      emit(PingingState(ping));
     });
   }
 }

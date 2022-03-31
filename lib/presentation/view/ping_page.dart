@@ -17,6 +17,7 @@ class PingPage extends StatefulWidget {
 
 class _PingPageState extends State<PingPage> {
   StringBuffer buffer = StringBuffer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,7 @@ class _PingPageState extends State<PingPage> {
               builder: (_, state) {
                 if (state is PingingState) {
                   return StreamBuilder<PingData>(
-                      stream: state.ping.stream,
+                      stream: state.ping,
                       builder: (ctx, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -63,9 +64,7 @@ class _PingPageState extends State<PingPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           buffer.clear();
-          context
-              .read<PingBloc>()
-              .add(PingPressedEvent(Ping("google.com", count: 5)));
+          context.read<PingBloc>().add(PingPressedEvent());
         },
         tooltip: 'Start Pinging',
         child: const Icon(Icons.network_ping_sharp),

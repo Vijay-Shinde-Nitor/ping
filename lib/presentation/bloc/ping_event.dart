@@ -1,9 +1,8 @@
+import 'package:equatable/equatable.dart';
 
-import 'package:dart_ping/dart_ping.dart';
-
-abstract class PingEvent {}
+abstract class PingEvent extends Equatable {}
 
 class PingPressedEvent extends PingEvent {
-  Ping ping;
-  PingPressedEvent(this.ping);
+  @override
+  List<Object?> get props => [];
 }

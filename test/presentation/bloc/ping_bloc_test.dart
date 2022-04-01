@@ -19,7 +19,7 @@ void main() {
   final states = [PingInitState(), PingingState(mockPing.stream)];
   final MockPingRepoImpl mockPingRepoImpl = MockPingRepoImpl();
   setUp(() {
-    when(mockPingRepoImpl.startPingProcess())
+    when(mockPingRepoImpl.startPingProcess(host: 'google.com', count: 5))
         .thenAnswer((realInvocation) async {
       return mockPing.stream;
     });

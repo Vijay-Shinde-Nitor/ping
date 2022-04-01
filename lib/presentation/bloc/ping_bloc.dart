@@ -11,7 +11,7 @@ class PingBloc extends Bloc<PingEvent, PingState> {
   PingBloc({required this.repository}) : super(PingInitState()) {
     on<PingPressedEvent>((event, emit) async {
       Stream<PingData> ping =
-          await repository.startPingProcess(host: Constant.googleCom, count: Constant.pingCount);
+          await repository.startPingProcess(host: Constant.hostName, count: Constant.pingCount);
       emit(PingingState(ping));
     });
   }
